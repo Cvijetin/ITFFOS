@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+<?php
+
+include("eu25.php");
+
+foreach($ceu as $value){
+	$ceu_duzine[$value] = strlen($value);
+}
+
+arsort($ceu_duzine);
+
+foreach($ceu_duzine as $key => $value){
+	$ceu_duzine_flip[] = $key;
+}
+
+for($i=0;$i<6;$i++){
+	echo $ceu_duzine_flip[$i] . "<br>";
+}
+
+
+
+?>
+</body>
+</html>
