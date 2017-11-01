@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body>
+<ul>
+<?php
+
+
+
+$niz = array("nektarina","mandarina", "kokos", "lubenica", "jabuka");
+$niz[7] ="nektarina";
+
+
+foreach ($niz as $vrijednosti) {
+	if (strlen($vrijednosti) >= 7) {
+		echo "<li>" . $vrijednosti . "</li>";
+	}
+}
+
+?>
+</ul>	
+</body>
+</html>
