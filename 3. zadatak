@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+<?php
+
+
+$niz[31000] ="Osijek";
+$niz[35000] ="Slavonski Brod";
+$niz[44317] ="Popovaca";
+$niz[10000] ="Zagreb";
+$niz[21000] ="Split";
+
+foreach ($niz as $key => $vrijednosti) {
+	echo $key . ": " . $vrijednosti . "</br>";
+}
+
+?>	
+</body>
+</html>
