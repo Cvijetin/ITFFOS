@@ -1,0 +1,16 @@
+<html>
+<head></head>
+<body>
+<?php
+
+include 'eu25.php';
+asort($ceu);
+foreach (array_slice($ceu,0,10) as $vrijednosti) {
+	echo $vrijednosti . "</br>";
+}
+   
+
+
+?>
+</body>
+</html>
