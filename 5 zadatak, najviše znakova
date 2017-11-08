@@ -24,3 +24,30 @@ for($i=0;$i<6;$i++){
 ?>
 </body>
 </html>
+
+
+//2. način..............................................................................................................
+
+<html>
+<head></head>
+<body>
+<?php
+include("eu25.php");
+
+//print_r($ceu);
+
+foreach ($ceu as $grad) {
+	$gradovi[$grad] = strlen($grad);
+}
+arsort($gradovi);
+
+$counter=1;
+foreach ($gradovi as $key => $value) {
+	echo $key . "<br>";
+	if($counter >= 6) break;
+	$counter++;
+}
+
+?>
+</body>
+</html>
