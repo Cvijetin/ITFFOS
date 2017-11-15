@@ -1,0 +1,29 @@
+<?php
+$niz_voce = array(1 => "kruške", 2 => "jabuke");
+
+
+
+$hrana = array(
+1 => array(1 => "kruške", 2 => "jabuke"),
+2 => array(1 => "mrkva", 2 => "salata")
+);
+
+echo $hrana[1][2];
+echo "<br/>";
+
+foreach ($niz_voce as $key => $value) {
+	echo $key . ":" . $value . "<br/>";
+}
+
+echo "<br/>";
+
+foreach ($hrana as $key => $value) {
+	echo $key . "<br/>";
+	foreach ($value as $key2 => $value2) {
+		echo $key2 . ": " . $value2 . "<br/>";
+	}
+}
+
+
+
+?>
