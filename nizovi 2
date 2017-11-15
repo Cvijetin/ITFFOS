@@ -1,0 +1,19 @@
+<?php
+$studenti = array(
+	"021156198" => array("ime" => "Pero",
+						"prezime" =>"Perić",
+						"gs" => 3),
+	"021543198" => array("ime" => "mara",
+						"prezime" =>"marić",
+						"gs" => 2),
+	"021156198" => array("ime" => "tvrtko",
+						"prezime" =>"prvi",
+						"gs" => 1),
+);
+
+$jmbag = $_GET["jmbag"];
+echo $jmbag . "<br>";
+echo $studenti[$jmbag]["ime"] . "<br>";
+echo $studenti[$jmbag]["prezime"] . "<br>";
+echo $studenti[$jmbag]["gs"] . "<br>";
+?>
