@@ -32,3 +32,28 @@ $ime = str_replace("đ", "d", $ime);
 echo $prezime . "</br>";
 echo $ime . "</br>";
 ?>
+
+<?php
+$prezime = strtolower($_POST["prezime"]);
+$ime = strtolower($_POST["ime"]);
+
+$prezime = str_replace("č", "c", $prezime);
+$prezime = str_replace("ć", "c", $prezime);
+$prezime = str_replace("š", "s", $prezime);
+$prezime = str_replace("dž", "dz", $prezime);
+$prezime = str_replace("ž", "z", $prezime);
+$prezime = str_replace("đ", "d", $prezime);
+
+$ime = str_replace("č", "c", $ime);
+$ime = str_replace("ć", "c", $ime);
+$ime = str_replace("š", "s", $ime);
+$ime = str_replace("dž", "dz", $ime);
+$ime = str_replace("ž", "z", $ime);
+$ime = str_replace("đ", "d", $ime);
+
+$prvo = substr($ime, 0,4);
+$drugo = substr($prezime, 0,4);
+
+echo $prvo . $drugo;
+
+?>
