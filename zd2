@@ -1,0 +1,10 @@
+<?php
+$ime = "Cvijetin";
+$prezime = "Vidaković";
+$godine = 22;
+$punoljetan = 4;
+if ($punoljetan = 4) {
+	echo "Imam " . $godine . " godine što znači da sam punoljetan već " . $punoljetan . " godine.";
+}
+
+?>
