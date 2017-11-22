@@ -1,0 +1,7 @@
+<?php
+$ime = "Cvijetin";
+$prezime = "Vidaković";
+
+echo "Moje ime i prezime je: " . $ime . " " . $prezime . "," . " a u obliku prezime, ime je: " . $prezime . " " . $ime;
+
+?>
