@@ -1,0 +1,20 @@
+<html>
+<body>
+
+<form action="welcome.php" method="post">
+Ime: <input type="text" name="ime"><br>
+Prezime: <input type="text" name="prezime"><br>
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$prezime = $_POST["prezime"];
+$ime = $_POST["ime"];
+
+echo substr($ime, 0,1) . "<br>";
+echo substr($prezime, 0,1);
+
+?>
