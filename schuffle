@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+<?php 
+
+$redova = isset($_GET["r"]) ? $_GET["r"] : 6;
+$kolona = isset($_GET["k"]) ? $_GET["k"] : 6;
+
+for($i=1;$i<=36;$i++){
+	$slike_arr[] = "slika_" . $i . ".jpg";
+}
+shuffle($slike_arr);
+
+$counter = 0;
+echo "<table cellpadding='0' cellspacing='0'>";
+
+for($i=1;$i<=$redova;$i++){
+	echo "<tr>";
+	for($j=1;$j<=$kolona;$j++){
+		
+		echo "<td><img src='slike/" . $slike_arr[$counter] . "'></td>";
+		$counter++;
+	}
+	echo "</tr>";
+}
+?>
+
+</body>
+</html>
