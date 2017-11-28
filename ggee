@@ -1,0 +1,20 @@
+<?php
+$prvi = ($_POST["prvi"]);
+$drugi = ($_POST["drugi"]);
+$operacija = ($_POST["metoda"]);
+
+if ($operacija == "plus") {
+	$rezultat1 = $prvi + $drugi;
+	echo $prvi . "+" . $drugi . "=" . $rezultat1;
+}elseif ($operacija == "minus") {
+	$rezultat1 = $prvi - $drugi;
+	echo $prvi . "-" . $drugi . "=" . $rezultat1;
+}elseif ($operacija == "puta") {
+	$rezultat1 = $prvi * $drugi;
+	echo $prvi . "*" . $drugi . "=" . $rezultat1;
+}elseif ($operacija == "podjeljeno") {
+	$rezultat1 = $prvi / $drugi;
+	echo $prvi . "/" . $drugi . "=" . $rezultat1;
+}
+
+?>
