@@ -1,0 +1,59 @@
+<?php 
+
+$dan = isset($_GET["dan"]) ? $_GET["dan"] : date("d");
+$mjesec = isset($_GET["mjesec"]) ? $_GET["mjesec"] : date("m");
+$godina = isset($_GET["godina"]) ? $_GET["godina"] : date("Y");
+
+$dan_u_tjednu = date("N", mktime(0,0,0,$mjesec,$dan,$godina));
+$start = 1-$dan_u_tjednu;
+$stop = $start+7;
+
+for($i=$start;$i<$stop;$i++){
+	$datum = mktime(0,0,0,$mjesec,($dan+$i),$godina);
+	// ili
+	//$datum = strtotime("14.10.2025");
+	
+	$mjesec = date("n", $datum);
+	echo date("d. ", $datum);
+	switch($mjesec){
+		case 1:
+			echo "siječanj";
+		break;
+		case 2:
+			echo "veljača";
+		break;
+		case 3:
+			echo "ožujak";
+		break;
+		case 4:
+			echo "travanj";
+		break;
+		case 5:
+			echo "svibanj";
+		break;
+		case 6:
+			echo "lipanj";
+		break;
+		case 7:
+			echo "srpanj";
+		break;
+		case 8:
+			echo "kolovoz";
+		break;
+		case 9:
+			echo "rujan";
+		break;
+		case 10:
+			echo "listopad";
+		break;
+		case 11:
+			echo "studeni";
+		break;
+		case 12:
+			echo "prosinac";
+		break;
+	}
+	echo date(" Y.", $datum) . " - ";
+	echo date("D", $datum) . "<br>";
+}
+?>
