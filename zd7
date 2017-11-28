@@ -32,10 +32,11 @@ $ime = str_replace("đ", "d", $ime);
 echo $prezime . "</br>";
 echo $ime . "</br>";
 ?>
-
+----------------------------------------------------------------------
+8ZD
 <?php
-$prezime = strtolower($_POST["prezime"]);
-$ime = strtolower($_POST["ime"]);
+$prezime = mb_strtolower($_POST["prezime"]);
+$ime = mb_strtolower($_POST["ime"]);
 
 $prezime = str_replace("č", "c", $prezime);
 $prezime = str_replace("ć", "c", $prezime);
@@ -51,9 +52,11 @@ $ime = str_replace("dž", "dz", $ime);
 $ime = str_replace("ž", "z", $ime);
 $ime = str_replace("đ", "d", $ime);
 
-$prvo = substr($ime, 0,4);
+$prvo = substr($ime, 0,1);
 $drugo = substr($prezime, 0,4);
 
 echo $prvo . $drugo;
 
 ?>
+-------------------------------------------------------------
+9ZD
