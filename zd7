@@ -60,3 +60,34 @@ echo $prvo . $drugo;
 ?>
 -------------------------------------------------------------
 9ZD
+<?php
+$ime="Cvijetin";
+$prezime="Vidaković";
+
+$lenght_ime= strlen($ime);
+$lenght_prezime = strlen($prezime);
+
+$start= 0;
+
+while ($start < strlen($ime)) {
+	echo $ime[$start] . "<br>";
+	$start++;
+}
+
+?>
+<?php
+$ime="Cvijetin";
+$prezime="Vidaković";
+$start=0;
+$prezime = str_replace("č", "c", $prezime);
+$prezime = str_replace("ć", "c", $prezime);
+$prezime = str_replace("š", "s", $prezime);
+$prezime = str_replace("dž", "dz", $prezime);
+$prezime = str_replace("ž", "z", $prezime);
+$prezime = str_replace("đ", "d", $prezime);
+while ($start < strlen($prezime)) {
+	echo $prezime[$start] . "<br>";
+	$start++;
+}
+?>
+
