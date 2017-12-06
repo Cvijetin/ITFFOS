@@ -1,0 +1,68 @@
+<?php
+include("pdo.php");
+include("meni.php");
+
+
+
+if (isset($_GET["brisi"])) {
+	$upit2 = $db->query("DELETE * FROM nastavnici WHERE id = " . $_GET["brisi"]);
+	$rezultati2 = $upit2->fetchAll();
+
+	echo "<strong>" . $rezultati2[0]["naziv"] . "</strong><br>";
+
+	$upit2 = $db->query("SELECT * FROM nastavnici WHERE odsjek = " . $_GET["odsjek"]);
+	$rezultati2 = $upit2->fetchAll();
+	
+}else{
+	$upit2 = $db->query("SELECT * FROM nastavnici");
+	$rezultati2 = $upit2->fetchAll();
+}
+foreach ($rezultati2 as $red) {
+	echo $red["ime"] . " " . $red["prezime"] . " - <a href=nastavnici.php?brisi='" . $red["id"] . "'>pobrisi</a><br>";
+}
+
+
+?>
+
+---------------------------------
+<?php
+include("pdo.php");
+include("meni.php");
+$upit = $db->query("SELECT * FROM odsjeci");
+
+$rezultati = $upit->fetchAll();
+
+//print_r($rezultati);
+
+foreach ($rezultati as $red) {
+	echo "<a href='teach.php?odsjek=" . $red["id"] . "'>" . $red["naziv"] . "</a><br>";
+}
+?>
+
+--------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="odsjeci.php">Odsjeci</a>
+<a href="teach.php">Nastavnici</a>
+<hr/>
+</body>
+</html>
+
+-------------------------------------------------
+
+<?php
+try {
+	$db = new PDO('mysql:host=localhost;dbname=vejzba8', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+} catch(PDOException $e) {
+    echo 'ERROR: ' . $e->getMessage();
+}
+$db->query("set names utf8");
+
+?>
