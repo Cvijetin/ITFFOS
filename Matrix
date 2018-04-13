@@ -1,0 +1,67 @@
+/*
+
+ * To change this license header, choose License Headers in Project Properties.
+
+ * To change this template file, choose Tools | Templates
+
+ * and open the template in the editor.
+
+ */
+package predavanje4;
+
+import java.util.Random;
+
+/**
+ *
+ *
+ *
+ * @author Korisnik
+ *
+ */
+public class Zadatak {
+
+    public static void main(String[] args) {
+
+        String[] niz = {"A", "S", "R", "T", "G", "M", "A", "T", "R", "I", "X", "W"};
+
+        Random r = new Random();
+
+        int znakovaURedu = 0;
+
+        int preskoci = 0;
+
+        for (;;) {
+
+            if (++znakovaURedu % 90 == 0) {
+
+                System.out.println("");
+
+                try {
+
+                    Thread.sleep(500);
+
+                } catch (Exception e) {
+
+                }
+
+            }
+
+            if (znakovaURedu % 1300 == 0) {
+
+                System.out.print(" Marija, vodim te u kino ");
+
+                preskoci = 25;
+
+            }
+
+            if (--preskoci < 0) {
+
+                System.out.print(niz[r.nextInt(niz.length - 1 - 0 + 1) + 0]);
+
+            }
+
+        }
+
+    }
+
+}
