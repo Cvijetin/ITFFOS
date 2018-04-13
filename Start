@@ -31,29 +31,29 @@ public class Start {
             e = new Evidencija();
             System.out.println("Unos nove evidencije");
             System.out.println("Upiši naziv evidencije");
-            e.setNaziv(ulaz.nextLine());
+            e.setNaziv(ucitajTest(ulaz));
             System.out.println("Unesi ime osobe");
-            e.setImeOsobe(ulaz.nextLine());
+            e.setImeOsobe(ucitajTest(ulaz));
 
             e.setPjesme(new ArrayList<>());
             while (true) {
                 System.out.println("Unos nove pjesme");
                 p = new Pjesma();
                 System.out.println("Unesi naziv pjesme");
-                p.setNaziv(ulaz.nextLine());
+                p.setNaziv(ucitajTest(ulaz));
                 System.out.println("Unesi naziv izvođača");
-                p.setIzvođač(ulaz.nextLine());
+                p.setIzvođač(ucitajTest(ulaz));
 
                 e.getPjesme().add(p);
 
-                System.out.println("Želite li unijeti još pjesama?");
-                if (ulaz.nextLine().equals("Ne")) {
+                System.out.println("Za prekid unosa pjesama unesite ne");
+                if (ulaz.nextLine().equalsIgnoreCase("Ne")) {
                     break;
                 }
                 evidencije.add(e);
             }
-            System.out.println("Želite li unijeti još evidencija?");
-            if (ulaz.nextLine().equals("Ne")) {
+            System.out.println("Za prekid unosa evidencija unesite ne");
+            if (ulaz.nextLine().equalsIgnoreCase("Ne")) {
                 break;
             }
         }
@@ -77,6 +77,19 @@ public class Start {
                 System.out.println(next.getIzvođač()+ " " + next.getNaziv() + "  " + s.get(next) );
             }
         }
+    }
+    private static String ucitajTest(Scanner ulaz){
+        String s;
+        do{
+            s=ulaz.nextLine();
+            if(s.trim().length()==0){
+                System.out.println("Obavezan unos");
+                continue;
+               
+            } return s;
+        }while(true);
+       
+        
     }
 
 }
