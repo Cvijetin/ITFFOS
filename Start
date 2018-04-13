@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ffos;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Korisnik
+ */
+public class Start {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        List<Evidencija> evidencije = new ArrayList<>();
+        Scanner ulaz = new Scanner(System.in);
+        Evidencija e;
+        Pjesma p;
+        for (;;) {
+            e = new Evidencija();
+            System.out.println("Unos nove evidencije");
+            System.out.println("Upiši naziv evidencije");
+            e.setNaziv(ulaz.nextLine());
+            System.out.println("Unesi ime osobe");
+            e.setImeOsobe(ulaz.nextLine());
+
+            e.setPjesme(new ArrayList<>());
+            while (true) {
+                System.out.println("Unos nove pjesme");
+                p = new Pjesma();
+                System.out.println("Unesi naziv pjesme");
+                p.setNaziv(ulaz.nextLine());
+                System.out.println("Unesi naziv izvođača");
+                p.setIzvođač(ulaz.nextLine());
+
+                e.getPjesme().add(p);
+
+                System.out.println("Želite li unijeti još pjesama?");
+                if (ulaz.nextLine().equals("Ne")) {
+                    break;
+                }
+                evidencije.add(e);
+            }
+            System.out.println("Želite li unijeti još evidencija?");
+            if (ulaz.nextLine().equals("Ne")) {
+                break;
+            }
+        }
+        Map<Pjesma, Integer> s = new HashMap<>();
+        Integer i;
+        for (Evidencija ev : evidencije) {
+            for (Pjesma pp : ev.getPjesme()) {
+                if(s.containsKey(pp)){
+                    i=s.get(pp);
+                    s.put(pp, ++i);
+                    }else{
+                    s.put(pp, 1);
+                }
+            }
+            
+        }
+        Iterator<Pjesma> it = s.keySet().iterator();
+        while(it.hasNext()){
+            Pjesma next = it.next();
+            if(s.get(next)>1){
+                System.out.println(next.getIzvođač()+ " " + next.getNaziv() + "  " + s.get(next) );
+            }
+        }
+    }
+
+}
