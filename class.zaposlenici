@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vjezbanje;
+
+import java.util.List;
+
+/**
+ *
+ * @author Cvijetin
+ */
+public class Zaposlenik {
+    private String ime;
+    private String prezime;
+    private List<Bruto> bruto;
+    private int brojDjece;
+
+    public String getIme() {
+        return ime;
+    }
+
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+    public List<Bruto> getBruto() {
+        return bruto;
+    }
+
+    public void setBruto(List<Bruto> bruto) {
+        this.bruto = bruto;
+    }
+
+    public int getBrojDjece() {
+        return brojDjece;
+    }
+
+    public void setBrojDjece(int brojDjece) {
+        this.brojDjece = brojDjece;
+    }
+
+}
