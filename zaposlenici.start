@@ -1,0 +1,111 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vjezbanje;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Cvijetin
+ */
+public class Vjezbanje {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        List<Zaposlenik> zaposlenici = new ArrayList<>();
+        Scanner ulaz = new Scanner(System.in);
+        Zaposlenik zp;
+        Bruto b;
+        for (;;) {
+            zp = new Zaposlenik();
+            System.out.println("Unesi novog zaposlenika");
+            System.out.println("Unesi ime zaposlenika");
+            zp.setIme(ucitajTekst(ulaz));
+            System.out.println("Unesi prezime zaposlenika");
+            zp.setPrezime(ucitajTekst(ulaz));
+            System.out.println("Unesi bruto placu");
+            zp.setBruto(new ArrayList<>());
+            while (true) {
+                System.out.println("Unos bruto iznos place");
+                b = new Bruto();
+                b.setIznosBruto(ucitajDecimal(ulaz));
+                zp.getBruto().add(b);
+                break;
+            }
+            System.out.println("Unesi broj djece");
+            zp.setBrojDjece(ucitajBroj(ulaz));
+            zaposlenici.add(zp);
+
+            System.out.println("Želite li unijeti još zaposlenika?");
+            if (ucitajTekst(ulaz).equalsIgnoreCase("Ne")) {
+                break;
+            }
+        }
+         
+       for (Zaposlenik z : zaposlenici){
+           for (Bruto bb : z.getBruto()){
+               double i = bb.getIznosBruto() * 0.75;
+               System.out.println(i + " " + z.getIme() + " " + z.getPrezime());
+           }
+       }
+   
+        }
+        
+
+ 
+    
+
+    private static String ucitajTekst(Scanner ulaz) {
+        String s;
+        do {
+            s = ulaz.nextLine();
+            if (s.trim().length() == 0) {
+                System.out.println("Obavezan unos");
+                continue;
+            }
+            return s;
+        } while (true);
+    }
+
+    private static double ucitajDecimal(Scanner ulaz) {
+        while (true) {
+            try {
+                return Double.parseDouble(
+                        ulaz.nextLine()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Niste unijeli decimalni broj");
+            } catch (Exception e) {
+                System.out.println("Ponovite unos");
+            }
+
+        }
+    }
+
+    public static int ucitajBroj(Scanner ulaz) {
+        while (true) {
+            try {
+                return Integer.parseInt(
+                        ulaz.nextLine()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Niste unijeli broj");
+            } catch (Exception e) {
+                System.out.println("Ponovite unos");
+            }
+
+        }
+    }
+}
