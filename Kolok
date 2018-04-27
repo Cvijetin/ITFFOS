@@ -1,4 +1,4 @@
-start.
+start
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,6 +7,7 @@ start.
  */
 package kolokvij;
 
+import com.sun.xml.internal.bind.unmarshaller.Messages;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ public class Start {
    
              Scanner ulaz = new Scanner(System.in);
              Prijava p;
-             
+             Student s;
              for(;;){
                  p = new Prijava();
                  System.out.println("Unos nove prijave");
@@ -39,6 +40,26 @@ public class Start {
                  p.setSifra(ucitajBroj(ulaz));
                  System.out.println("Upiši datum prijave");
                  p.setDatum(ucitajDatum(ulaz));
+                 p.setStudenti(new ArrayList<>());
+                 while(true){
+                   System.out.println("Unos studenta na prijavu");
+                   s = new Student();
+                     System.out.println("Unesi JMBAG");
+                     s.setJmbag(ucitajBroj(ulaz));
+                     System.out.println("Unesi ime");
+                     s.setIme(ucitajIme(ulaz));
+                     System.out.println("Unesi prezime");
+                     s.setPrezime(ucitajTekst(ulaz));
+                     System.out.println("Unesi prosjek na dvije decimale");
+                     s.setProjsek(ucitajDecimal(ulaz));
+                     p.getStudenti().add(s);
+                     
+                     System.out.println("Unos n za prekid unosa prijava");
+                     if (ulaz.nextLine().equals("n"))
+                         break;
+                 }
+            
+                 
                  
              }
     }
@@ -56,28 +77,68 @@ public class Start {
 
         }
     }
-      public static boolean ucitajDatum(Scanner ulaz) {
-          
+      public static Date ucitajDatum(Scanner ulaz) {
+     
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
     Date testDate = null;
         while (true) {
             try {
                 testDate= sdf.parse(
                         ulaz.nextLine()
-                );
+                        
+                ); return testDate;
             } catch (ParseException e) {
                 System.out.println("Unos datuma obvetno u formatu dd.MM.yyyy.");
             } 
 
         }
     }
+         private static String ucitajTekst(Scanner ulaz){
+        String s;
+        do{
+            s=ulaz.nextLine();
+            if(s.trim().length()==0){
+                System.out.println("Obavezan unos");
+                continue;
+               
+            } return s;
+        }while(true);
+       
+        
+    }
+            private static String ucitajIme(Scanner ulaz){
+        String s;
+        do{
+            s=ulaz.nextLine();
+            if(s.trim().length()==0){
+                System.out.println("Ime obvezno");
+                continue;
+               
+            } return s;
+        }while(true);
+       
+        
+    }
+              public static double ucitajDecimal(Scanner ulaz) {
+        while (true) {
+            try {
+               return Double.parseDouble(
+                        ulaz.nextLine()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Niste unijeli decimalni broj");
+            } catch (Exception e) {
+                System.out.println("Ponovite unos");
+            }
+            
+        }
+    }
    
     
 }
 
+--------------------------------------------------
 
---------------------------
-prijava
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -85,6 +146,7 @@ prijava
  */
 package kolokvij;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -93,7 +155,7 @@ import java.util.List;
  */
 public class Prijava {
     private int sifra;
-    private boolean datum;
+    private Date datum;
     private List<Student> studenti;
 
     public int getSifra() {
@@ -104,11 +166,11 @@ public class Prijava {
         this.sifra = sifra;
     }
 
-    public boolean isDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(boolean datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 
@@ -119,4 +181,8 @@ public class Prijava {
     public void setStudenti(List<Student> studenti) {
         this.studenti = studenti;
     }
+
+    
+    
 }
+
