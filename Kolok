@@ -1,0 +1,122 @@
+start.
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kolokvij;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+
+/**
+ *
+ * @author Korisnik
+ */
+public class Start {
+    private static Object dateFormat;
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+            List<Prijava> prijave = new ArrayList<>();
+   
+             Scanner ulaz = new Scanner(System.in);
+             Prijava p;
+             
+             for(;;){
+                 p = new Prijava();
+                 System.out.println("Unos nove prijave");
+                 System.out.println("Upiši šifru prijave");
+                 p.setSifra(ucitajBroj(ulaz));
+                 System.out.println("Upiši datum prijave");
+                 p.setDatum(ucitajDatum(ulaz));
+                 
+             }
+    }
+    public static int ucitajBroj(Scanner ulaz) {
+        while (true) {
+            try {
+                return Integer.parseInt(
+                        ulaz.nextLine()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Niste unijeli broj");
+            } catch (Exception e) {
+                System.out.println("Ponovite unos");
+            }
+
+        }
+    }
+      public static boolean ucitajDatum(Scanner ulaz) {
+          
+    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+    Date testDate = null;
+        while (true) {
+            try {
+                testDate= sdf.parse(
+                        ulaz.nextLine()
+                );
+            } catch (ParseException e) {
+                System.out.println("Unos datuma obvetno u formatu dd.MM.yyyy.");
+            } 
+
+        }
+    }
+   
+    
+}
+
+
+--------------------------
+prijava
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kolokvij;
+
+import java.util.List;
+
+/**
+ *
+ * @author Korisnik
+ */
+public class Prijava {
+    private int sifra;
+    private boolean datum;
+    private List<Student> studenti;
+
+    public int getSifra() {
+        return sifra;
+    }
+
+    public void setSifra(int sifra) {
+        this.sifra = sifra;
+    }
+
+    public boolean isDatum() {
+        return datum;
+    }
+
+    public void setDatum(boolean datum) {
+        this.datum = datum;
+    }
+
+    public List<Student> getStudenti() {
+        return studenti;
+    }
+
+    public void setStudenti(List<Student> studenti) {
+        this.studenti = studenti;
+    }
+}
